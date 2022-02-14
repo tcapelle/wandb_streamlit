@@ -50,8 +50,8 @@ sb.write(pseudo_code)
 
 # train model
 if sb.button("Run Example"):
-    my_bar = sb.progress(0)
+    
     print("Running training")
     for i in range(runs):
-        train(project=project, entity=entity, epochs=epochs)
-        my_bar.progress((i+1)/runs)
+        my_bar = sb.progress(0)
+        train(project=project, entity=entity, epochs=epochs, bar=my_bar)

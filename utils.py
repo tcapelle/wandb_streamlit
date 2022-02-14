@@ -3,7 +3,7 @@ import random, time
 import wandb
 
 
-def train(project="st", entity=None, epochs=10):
+def train(project="st", entity=None, epochs=10, bar=None):
     run = wandb.init(
         # Set the project where this run will be logged
         project=project, 
@@ -24,6 +24,7 @@ def train(project="st", entity=None, epochs=10):
         # 2️⃣ Log metrics from your script to W&B
         wandb.log({"acc": acc, "loss": loss})
         time.sleep(0.1)
+        bar.progress(epoch/epochs)
         
     # Mark the run as finished
     wandb.finish()
