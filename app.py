@@ -22,7 +22,6 @@ sb = st.sidebar
 sb.title("Train your model")
 # wandb_token = sb.text_input("paste your wandb Api key if you want: https://wandb.ai/authorize", type="password")
 
-run_name = sb.text_input("Run name", run_name, disabled=True)
 
 # wandb.login(key=wandb_token)
 wandb.login(anonymous="must")
