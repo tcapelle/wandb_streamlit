@@ -1,5 +1,5 @@
 ---
-title: My_demo
+title: wandb
 emoji: ⚡
 colorFrom: gray
 colorTo: green
