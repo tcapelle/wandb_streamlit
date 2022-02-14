@@ -1,11 +1,21 @@
 import random, time
+import requests
 
 import wandb
 
 
-def train(project="st", entity=None, epochs=10, bar=None):
+
+word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+
+response = requests.get(word_site)
+WORDS = [w.decode("UTF-8") for w in response.content.splitlines()]
+
+
+
+def train(name, project="st", entity=None, epochs=10, bar=None):
     run = wandb.init(
         # Set the project where this run will be logged
+        name=name,
         project=project, 
         entity=entity,
         # Track hyperparameters and run metadata
