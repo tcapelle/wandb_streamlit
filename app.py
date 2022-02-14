@@ -22,7 +22,7 @@ sb.title("Train your model")
 
 
 # wandb.login(key=wandb_token)
-wandb.login(anonymous="allow")
+wandb.login(anonymous="must")
 api = wandb.Api()
 
 # render wandb dashboard
