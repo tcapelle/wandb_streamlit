@@ -22,21 +22,18 @@ sb = st.sidebar
 sb.title("Train your model")
 # wandb_token = sb.text_input("paste your wandb Api key if you want: https://wandb.ai/authorize", type="password")
 
-
 # wandb.login(key=wandb_token)
 wandb.login(anonymous="must")
 api = wandb.Api()
 
 st.success(f"You should see a new run named **{run_name}**, it\'ll have a green circle while it\'s still active")
 
-
 # render wandb dashboard
 components.html(get_project(api, project, entity), height=HEIGHT)
 
 # run params
 runs = 1
-epochs = sb.number_input('Number of epochs:', min_value=1, max_value=1000, value=100)
-
+epochs = sb.slider('Number of epochs:', min_value=100, max_value=500, value=100)
 
 
 pseudo_code = """
@@ -53,6 +50,7 @@ for i in range(epochs):
 
 sb.write(pseudo_code)
 
+sb.write("Click 👇 to start logging")
 # train model
 if sb.button("Run Example"):
     
@@ -60,3 +58,5 @@ if sb.button("Run Example"):
     for i in range(runs):
         my_bar = sb.progress(0)
         train(name=run_name, project=project, entity=entity, epochs=epochs, bar=my_bar)
+
+st.subheader("Check our 🔥 [Pytorch Intro colab](https://wandb.me/intro) 🔥")
